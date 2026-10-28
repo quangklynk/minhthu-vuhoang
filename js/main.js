@@ -93,14 +93,13 @@
   const unlockEvents = ["pointerdown", "touchstart", "keydown", "click"];
   const autoStart = (e) => {
     if (userToggled || !bgm.paused || musicBtn.contains(e?.target)) return;
+    unlockEvents.forEach((ev) => removeEventListener(ev, autoStart, true));
     playMusic()
-      .then(() =>
-        unlockEvents.forEach((ev) => removeEventListener(ev, autoStart, true)),
-      )
-      .catch(() => {});
+      .catch(() =>
+        showToast("Không phát được nhạc, vui lòng kiểm tra file trong thư mục music"),
+      );
   };
   unlockEvents.forEach((ev) => addEventListener(ev, autoStart, true));
-  autoStart();
 
   const YEAR = 2026;
   const MONTH = 11; // tháng 12 (chỉ số bắt đầu từ 0)
