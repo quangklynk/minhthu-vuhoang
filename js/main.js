@@ -153,12 +153,20 @@
   const box = document.getElementById("lightbox");
   const big = box.querySelector("img");
   const closeBox = () => box.classList.remove("open");
+  document.querySelectorAll(".gift-icon").forEach((icon, i) => {
+    icon.addEventListener("click", () => {
+      big.src = `thiep-cuoi-assets/QR-${i + 1}.jpg`;
+      big.alt = `Mã QR ${i + 1}`;
+      box.classList.add("open");
+    });
+  });
 
   // Vòng đu quay dọc
   const wheel = document.getElementById("wheel");
   const slides = [...wheel.querySelectorAll(".wheel-slide")];
   const dotsWrap = document.getElementById("wheelDots");
   const STEP = 360 / slides.length;
+  wheel.style.setProperty("--step-angle", `${STEP}deg`);
   // step tăng/giảm liên tục để bánh xe luôn quay cùng chiều khi vòng lại
   let step = 0;
   const current = () =>
@@ -202,6 +210,7 @@
       if (dragged) return;
       if (i !== current()) return goTo(i);
       big.src = s.src;
+      big.alt = s.alt;
       box.classList.add("open");
     });
   });
