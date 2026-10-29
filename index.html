@@ -237,14 +237,43 @@
         </p>
         <div class="eyebrow">Trân trọng kính mời</div>
         </br>
+        
+        <label class="wish-label gift-title" for="wishSearch">
+          Để lại lời chúc của bạn cho cô dâu và chú rể
+        </label>
+        <div class="wish-combobox" id="wishCombobox">
+          <input
+            class="wish-search"
+            id="wishSearch"
+            type="search"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-controls="wishOptions"
+            aria-haspopup="listbox"
+            placeholder="Tìm hoặc chọn lời chúc..."
+            autocomplete="off"
+          />
+          <input type="hidden" id="weddingWish" name="weddingWish" />
+          <div
+            class="wish-options"
+            id="wishOptions"
+            role="listbox"
+            aria-label="Danh sách lời chúc"
+            hidden
+          ></div>
+          <p class="wish-results" id="wishResults" role="status" aria-live="polite"></p>
+        </div>
+
         <strong class="rsvp-label">Xác nhận tham dự tiệc</strong>
         <button type="button" class="button" id="rsvpBtn">
           ♧&nbsp; Tôi sẽ tham dự
         </button>
+
       </section>
 
       <section class="section gifts">
-        <h2 class="gift-title">Gửi lời chúc phúc cho cô dâu và chú rể</h2>
+        <h2 class="gift-title">Gửi món quà nhỏ tới cặp đôi</h2>
         <div class="gift-list">
           <article class="gift">
             <div class="portrait groom" role="img" aria-label="Chú rể"></div>

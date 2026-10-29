@@ -89,7 +89,7 @@ img {
 
 .section {
   position: relative;
-  padding: 62px 28px;
+  padding: 32px 28px;
   text-align: center;
 }
 .section-title {
@@ -733,13 +733,90 @@ img {
 }
 .rsvp-label {
   display: block;
-  margin-top: 4px;
+  margin-top: 14px;
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 600;
 }
+.wish-label {
+  display: block;
+  margin: 18px auto 8px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.wish-combobox {
+  position: relative;
+  width: min(100%, 420px);
+  margin: 0 auto;
+}
+.wish-combobox::after {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  color: var(--muted);
+  content: "⌄";
+  font-size: 18px;
+  pointer-events: none;
+}
+.wish-search {
+  display: block;
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.wish-search:focus {
+  border-color: var(--plum);
+  outline-color: var(--plum);
+}
+.wish-search::placeholder {
+  color: #8a7f7d;
+}
+.wish-options {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+  z-index: 5;
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 24px #49353b20;
+  text-align: left;
+}
+.wish-options[hidden] {
+  display: none;
+}
+.wish-option {
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.wish-option:hover,
+.wish-option.active {
+  background: #f7f1ed;
+}
+.wish-results {
+  min-height: 1.5em;
+  margin: 6px auto 0;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--muted);
+}
 .button {
   margin-top: 14px;
+  margin-bottom: 14px;
   padding: 13px 26px;
   border: 0;
   border-radius: 999px;
@@ -779,7 +856,7 @@ img {
   grid-template-columns: 74px 1fr 58px;
   align-items: center;
   gap: 10px;
-  padding: 9px;
+  padding: 2px;
   border: 1px solid #e9dddd;
   border-radius: 16px;
   background: #fffaf7;
@@ -787,11 +864,11 @@ img {
   text-align: left;
 }
 .gift:nth-child(even) {
-  grid-template-columns: 58px 1fr 74px;
+  grid-template-columns: 58px 1fr 60px;
 }
 .portrait {
-  width: 74px;
-  height: 88px;
+  width: 60px;
+  height: 65px;
   border-radius: 12px;
   background-color: #eadfe0;
   background-repeat: no-repeat;
