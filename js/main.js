@@ -3,6 +3,45 @@
     "(prefers-reduced-motion: reduce)",
   ).matches;
 
+  const envelopeScreen = document.getElementById("envelopeScreen");
+  const envelopeOpen = document.getElementById("envelopeOpen");
+  const invitation = document.getElementById("invitation");
+  let openingTimeout;
+  const finishOpening = () => {
+    clearTimeout(openingTimeout);
+    envelopeScreen.removeEventListener("transitionend", onEnvelopeTransitionEnd);
+    envelopeScreen.hidden = true;
+    document.body.classList.remove("invitation-locked");
+  };
+  const onEnvelopeTransitionEnd = (event) => {
+    if (event.target !== envelopeScreen || event.propertyName !== "opacity") {
+      return;
+    }
+    finishOpening();
+  };
+  document.body.classList.add("invitation-locked");
+  envelopeOpen.focus({ preventScroll: true });
+  envelopeScreen.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab") return;
+    event.preventDefault();
+    envelopeOpen.focus();
+  });
+  envelopeOpen.addEventListener("click", () => {
+    envelopeOpen.disabled = true;
+    envelopeScreen.classList.add("opening");
+    envelopeScreen.setAttribute("aria-hidden", "true");
+    invitation.inert = false;
+    invitation.focus({ preventScroll: true });
+    if (reduceMotion) {
+      finishOpening();
+      return;
+    }
+    envelopeScreen.addEventListener("transitionend", onEnvelopeTransitionEnd);
+    openingTimeout = setTimeout(finishOpening, 2200);
+    // scroll to top to avoid the envelope being scrolled out of view during the animation
+    scrollTo({ top: 0, behavior: "smooth" });
+  });
+
   // Hiện dần khi cuộn tới
   document.documentElement.classList.add("js");
   const revealTargets = document.querySelectorAll(
@@ -156,7 +195,7 @@
     { value: "wish-8", text: "Chúc tình yêu hôm nay mãi là khởi đầu của những điều tuyệt vời." },
     { value: "wish-9", text: "Chúc hai bạn sớm đón thêm nhiều niềm vui và may mắn." },
     { value: "wish-10", text: "Chúc mừng hạnh phúc! Mong hai bạn mãi là bến đỗ bình yên của nhau." },
-        { value: "wish-11", text: "Chúc hai bạn luôn tìm thấy niềm vui trong từng khoảnh khắc bên nhau." },
+    { value: "wish-11", text: "Chúc hai bạn luôn tìm thấy niềm vui trong từng khoảnh khắc bên nhau." },
     { value: "wish-12", text: "Chúc cuộc sống hôn nhân của hai bạn luôn ngập tràn yêu thương." },
     { value: "wish-13", text: "Mong rằng hôm nay sẽ là khởi đầu cho hành trình hạnh phúc dài lâu." },
     { value: "wish-14", text: "Chúc hai bạn mãi giữ được sự chân thành và tin tưởng dành cho nhau." },

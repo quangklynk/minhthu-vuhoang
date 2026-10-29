@@ -15,7 +15,36 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <main class="page">
+    <div
+      class="envelope-screen"
+      id="envelopeScreen"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="envelopeTitle"
+    >
+      <div class="envelope-cover">
+        <div class="envelope-card envelope-copy" aria-hidden="true">
+          <div class="eyebrow">Wedding invitation</div>
+          <h1 id="envelopeTitle">Vũ Hoàng  <span>&amp;</span>  Minh Thư</h1>
+          <p>Chủ nhật · 06.12.2026</p>
+        </div>
+        <div class="envelope-back" aria-hidden="true"></div>
+        <div class="envelope-flap" aria-hidden="true"></div>
+        <div class="envelope-front" aria-hidden="true"></div>
+        <button
+          class="envelope-open"
+          id="envelopeOpen"
+          type="button"
+          aria-label="Mở thiệp mời"
+          aria-describedby="envelopeHint"
+        >
+          <span aria-hidden="true">Mở thiệp</span>
+        </button>
+      </div>
+      <p class="envelope-hint" id="envelopeHint">Nhấn nút để mở thiệp mời</p>
+    </div>
+
+    <main class="page" id="invitation" tabindex="-1" inert>
       <header class="hero">
         <img
           class="hero-photo"
