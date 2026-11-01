@@ -1,0 +1,99 @@
+description = "Layout thiệp cưới Vũ Hoàng & Minh Thư"
+==
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f1ed" />
+    <meta name="description" content="{{ this.page.meta_description }}" />
+    <title>{{ this.page.meta_title ?: this.page.title }}</title>
+    <link rel="preload" href="{{ 'assets/fonts/GreatVibes-400-normal-latin.woff2'|theme }}" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="{{ 'assets/fonts/GreatVibes-400-normal-vietnamese.woff2'|theme }}" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="{{ 'assets/css/fonts.css'|theme }}" />
+    <link rel="stylesheet" href="{{ 'assets/css/style.css'|theme }}" />
+    {% styles %}
+  </head>
+  <body>
+    <div
+      class="envelope-screen"
+      id="envelopeScreen"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="envelopeTitle"
+    >
+      <div class="envelope-cover">
+        <div class="envelope-card envelope-copy" aria-hidden="true">
+          <div class="eyebrow">Wedding invitation</div>
+          <h1 id="envelopeTitle">Vũ Hoàng  <span>&amp;</span>  Minh Thư</h1>
+          <p>Chủ nhật · 06.12.2026</p>
+        </div>
+        <div class="envelope-back" aria-hidden="true"></div>
+        <div class="envelope-flap" aria-hidden="true"></div>
+        <div class="envelope-front" aria-hidden="true"></div>
+        <button
+          class="envelope-open"
+          id="envelopeOpen"
+          type="button"
+          aria-label="Mở thiệp mời"
+          aria-describedby="envelopeHint"
+        >
+          <svg
+            viewBox="0 0 80 80"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle cx="40" cy="40" r="37" fill="#d4c5b8" />
+            <circle cx="40" cy="40" r="33" fill="#f3e8dc" stroke="#fff9f0" stroke-width="1.5" />
+            <circle cx="40" cy="40" r="29" fill="none" stroke="#c1b0a1" stroke-width="1.5" />
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#fffaf2" stroke-width="1" />
+            <g fill="none" stroke="#9e8d7f" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M40 64C39 55 41 47 40 38S39 26 40 17M40 54C34 49 29 44 25 37M40 47C46 42 51 36 54 29M40 40C35 35 33 29 32 23M40 34C44 30 47 24 48 19" stroke-width="1.4" />
+              <path d="M34 49C31 50 28 49 26 46 30 45 33 46 34 49ZM30 44C27 44 24 42 23 39 27 39 29 41 30 44ZM27 39C24 38 22 35 22 32 26 33 27 36 27 39ZM36 44C37 41 36 38 34 36 32 39 33 42 36 44ZM35 35C32 34 30 31 30 28 34 29 35 32 35 35ZM34 29C32 26 32 23 33 20 36 23 36 26 34 29ZM45 42C48 43 51 42 53 40 50 38 47 39 45 42ZM50 36C53 36 56 34 57 31 53 31 51 33 50 36ZM53 30C56 29 58 26 58 23 54 24 53 27 53 30ZM43 35C42 32 43 29 45 27 47 30 46 33 43 35ZM45 27C44 24 45 21 47 18 49 22 48 25 45 27ZM39 34C36 32 35 29 36 26 39 28 40 31 39 34Z" fill="#b9a899" stroke-width="1" />
+              <path d="M37 64h6M40 63c-3-2-5-4-7-7m7 4c3-2 5-4 7-7" stroke-width="1.2" />
+            </g>
+          </svg>
+        </button>
+      </div>
+      <p class="envelope-hint" id="envelopeHint">Nhấn vào dấu mộc để mở thiệp mời</p>
+    </div>
+
+    {% page %}
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh lớn">
+      <button type="button" aria-label="Đóng">×</button
+      ><img alt="Ảnh phóng to" />
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="petals" id="petals" aria-hidden="true"></div>
+
+    {# Nhạc nền: đặt file trong thư mục assets/music/ #}
+    <audio
+      id="bgm"
+      src="{{ 'assets/music/Ed%20Sheeran%20-%20Perfect%20(Official%20Music%20Video)%20-%20Ed%20Sheeran.mp3'|theme }}"
+      loop
+      preload="auto"
+    ></audio>
+    <button type="button" class="music" id="musicBtn" aria-label="Bật nhạc" title="Bật / tắt nhạc">
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
+    </button>
+
+    <a
+      class="map-btn"
+      href="https://www.google.com/maps/dir//Golden+Palace+-+Trung+t%C3%A2m+Ti%E1%BB%87c+c%C6%B0%E1%BB%9Bi+%26+H%E1%BB%99i+ngh%E1%BB%8B,+04-06+Nguy%E1%BB%85n+%C3%81i+Qu%E1%BB%91c,+Tam+Hi%E1%BB%87p,+%C4%90%E1%BB%93ng+Nai,+Vi%E1%BB%87t+Nam/@37.0625,-95.677068,4z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3174dd002364c983:0x65c15515479738af!2m2!1d106.844071!2d10.9640947?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chỉ đường đến Golden Palace trên Google Maps"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#ea4335" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7z" />
+        <circle cx="12" cy="9" r="2.6" fill="#fff" />
+      </svg>
+      Google Maps
+    </a>
+
+    <script src="{{ 'assets/js/main.js'|theme }}" defer></script>
+    {% scripts %}
+  </body>
+</html>
