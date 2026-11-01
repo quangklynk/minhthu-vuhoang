@@ -399,7 +399,7 @@
   const closeBox = () => box.classList.remove("open");
   document.querySelectorAll(".gift-icon").forEach((icon, i) => {
     icon.addEventListener("click", () => {
-      big.src = `thiep-cuoi-assets/QR-${i + 1}.jpg`;
+      big.src = icon.dataset.qr;
       big.alt = `Mã QR ${i + 1}`;
       box.classList.add("open");
     });
